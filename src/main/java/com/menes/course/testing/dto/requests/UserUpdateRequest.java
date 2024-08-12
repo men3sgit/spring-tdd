@@ -1,4 +1,4 @@
-package com.menes.course.testing.dto;
+package com.menes.course.testing.dto.requests;
 
 import lombok.Getter;
 

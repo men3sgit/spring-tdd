@@ -1,11 +1,21 @@
 package com.menes.course.testing.dto;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.util.Optionals;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Getter
-@Setter
-public class UserDto implements Optionals {
+@Builder
+public class UserDto {
+    private Long id;
 
+    private String username;
+
+    private String name;
+
+    private LocalDate dob;
+
+    private List<AddressDto> addresses;
 }

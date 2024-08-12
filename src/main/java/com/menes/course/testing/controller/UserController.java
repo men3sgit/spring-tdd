@@ -1,16 +1,16 @@
 package com.menes.course.testing.controller;
 
-import com.menes.course.testing.dto.UserCreateRequest;
+import com.menes.course.testing.dto.requests.UserCreateRequest;
 import com.menes.course.testing.dto.UserDto;
-import com.menes.course.testing.dto.UserUpdateRequest;
+import com.menes.course.testing.dto.requests.UserUpdateRequest;
+import com.menes.course.testing.entity.User;
 import com.menes.course.testing.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -20,15 +20,27 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<UserDto>> getAllUsers() {
-        List<UserDto> users = userService.getAllUsers();
+    public ResponseEntity<List<UserDto>> getAllUsers(Pageable pageable) {
+        List<UserDto> users = userService.getAllUsers(pageable);
         return ResponseEntity.ok(users);
     }
 
+    @GetMapping(path = "/test")
+    public ResponseEntity<List<User>> getAllUsersTest() {
+        List<User> users = userService.getAllUsersTest();
+        return ResponseEntity.ok(users);
+    }
+
+
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        UserDto user = userService.getUserById(id);
-        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    public ResponseEntity<UserDto> getUserById(@PathVariable Long id) {
+
+        if (userService.existsById(id)) {
+            UserDto user = userService.getUserById(id);
+            return ResponseEntity.ok(user);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
     }
 
     @PostMapping
