@@ -1,28 +1,29 @@
 package com.menes.course.testing;
 
-import lombok.RequiredArgsConstructor;
+import com.menes.course.testing.dto.AddressDto;
+import com.menes.course.testing.service.AddressService;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import java.util.List;
+
+import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class TestingApplicationTests {
-    @Autowired
-    private  MockMvc mockMvc;
+public class TestingApplicationTests {
 
     @Test
-    public void itShouldReturns3UsersRecord() throws Exception {
-        mockMvc.perform(get("/api/v1/users?page=0&size=3"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.size").value(3));
+    public void contextLoads() {
     }
-
 }

@@ -1,16 +1,18 @@
 package com.menes.course.testing.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users")
-
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +26,14 @@ public class User {
 
     private LocalDate dob;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Address> addresses = new HashSet<>();
+
+    public void addAddress(Address address) {
+        if (address != null) {
+            addresses.add(address);
+        }
+    }
 
 
 }

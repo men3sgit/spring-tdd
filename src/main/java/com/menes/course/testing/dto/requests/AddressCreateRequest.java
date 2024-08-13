@@ -1,15 +1,9 @@
-package com.menes.course.testing.dto;
+package com.menes.course.testing.dto.requests;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
-@Builder
-public class AddressDto {
-    private Long id;
-
+public class AddressCreateRequest {
     private String street;
 
     private String city;

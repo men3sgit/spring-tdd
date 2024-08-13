@@ -30,7 +30,6 @@ public class Address {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    @EqualsAndHashCode.Exclude
     @JsonIgnore
     private User user;
 

@@ -31,18 +31,18 @@ public class DataLoader {
 // Creating addresses
             Address address1 = new Address();
             address1.setCountry("USA");
-            address1.setStreet("123 Elm Street");
+            address1.setStreet("123 Main St");
             address1.setCity("Springfield");
             address1.setState("IL");
-            address1.setPostalCode("62701");
+            address1.setPostalCode("62565");
 
 // Set the user for address1
             address1.setUser(user1);
 
             Address address2 = new Address();
-            address2.setCountry("USA");
-            address2.setStreet("456 Oak Avenue");
-            address2.setCity("Shelbyville");
+            address2.setCountry("USB");
+            address2.setStreet("456 Elm St");
+            address2.setCity("Springfield");
             address2.setState("IL");
             address2.setPostalCode("62565");
 

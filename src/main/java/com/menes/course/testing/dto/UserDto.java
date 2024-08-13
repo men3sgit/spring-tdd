@@ -1,5 +1,6 @@
 package com.menes.course.testing.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -18,4 +19,6 @@ public class UserDto {
     private LocalDate dob;
 
     private List<AddressDto> addresses;
+
+
 }
